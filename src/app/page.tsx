@@ -5,11 +5,10 @@ import { Product } from '@/types';
 import Link from 'next/link';
 
 export default async function Home({ searchParams }: {
-  searchParams: {
-    page?: string,
-    q?: string
-  }
+  searchParams?:
+  Promise<{ page?: string; q?: string }>;
 }) {
+  if (!searchParams) return <div>Loading...</div>
   const query = await searchParams;
   const q = query?.q ? query?.q : '';
   const { data } =
@@ -17,13 +16,14 @@ export default async function Home({ searchParams }: {
       await productApi.getProducts(
         { page: query.page ? parseInt(query.page) : 1 }
       );
-  if (!data) return <div>Loading...</div>
 
+
+  if (!data) return <div>Loading...</div>
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold text-center mb-8 ">Our Products</h1>
       <ProductSearch />
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 py">
         {data.data?.map((product: Product) => (
           <div
             key={product._id}
@@ -91,7 +91,7 @@ export default async function Home({ searchParams }: {
         !query?.q &&
         <Pagination
           currentPage={data.pagination.page}
-          totalPages={data.pagination.total}
+          totalPages={data.pagination.pages}
         />}
     </div>
   );

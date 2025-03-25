@@ -28,10 +28,14 @@ export default async function RootLayout({
   }
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`${inter.className}  max-w-6xl container mx-auto  `}>
         <AuthProvider user={user}>
-          <Navbar />
-          <main className="container mx-auto p-4">{children}</main>
+          <div
+          >
+
+            <Navbar />
+            <main className="">{children}</main>
+          </ div>
         </AuthProvider>
         <Toaster />
 
