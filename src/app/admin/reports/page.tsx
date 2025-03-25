@@ -17,12 +17,12 @@ export default function ReportsPage() {
     const [newProduct, setNewProduct] = useState({
         name: '',
         price: '',
-        category: '',
+        category: 'electronics',
         description: '',
         imageUrl: '',
         stock: '',
         featured: 'false',
-        ratings: '',
+        ratings: '4',
     });
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -155,10 +155,15 @@ export default function ReportsPage() {
                             onChange={handleChange}
                             className="mt-1 w-full px-3 py-2 border rounded-md"
                         >
+                            {/* 'electronics', 'clothing', 'books', 'home', 'beauty', 'sports', 'other' */}
                             <option value="electronics">Electronics</option>
                             <option value="clothing">Clothing</option>
                             <option value="books">Books</option>
-                            <option value="furniture">Furniture</option>
+                            <option value="home">Home</option>
+                            <option value="beauty">Beauty</option>
+                            <option value="sports">Sports</option>
+                            <option value="other">Other</option>
+
                         </select>
 
                     </div>

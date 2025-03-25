@@ -23,6 +23,8 @@ export default async function Product({
                 {/* Product Image */}
                 <div className="bg-gray-100 rounded-lg p-8 aspect-square">
                     {product.imageUrl && <Image
+                        width={500}
+                        height={500}
                         src={product.imageUrl || "/placeholder-product.jpg"}
                         alt={product.name}
                         className="w-full h-full object-contain"

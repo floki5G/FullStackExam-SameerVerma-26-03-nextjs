@@ -13,6 +13,7 @@ export default function Navbar() {
                     {user ? (
                         <>
                             <Link href="/cart" className="">Cart</Link>
+                            <Link href="/orders" className="">Orders</Link>
                             <button onClick={logout} className="">Logout</button>
                             {user.role === 'admin' && (
                                 <Link href="/admin/reports" className="">Reports</Link>
