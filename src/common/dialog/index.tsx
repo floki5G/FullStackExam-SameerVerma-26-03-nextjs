@@ -39,7 +39,7 @@ const Dialog = ({ isOpen, onClose, title, children, type }: DialogProps) => {
                     className={`relative ${type !== 'auto' ? 'w-full max-w-2xl' : ''} p-6 mx-auto bg-white rounded-lg`}
                     onClick={(e) => e.stopPropagation()} // Prevent click from closing dialog
                 >
-                    {title && <h3 className="pb-5 mb-2 text-lg font-semibold border-b border-gray-400">{title}</h3>}
+                    {title && <h3 className="pb-5 mb-2 text-lg text-black font-semibold border-b border-gray-400">{title}</h3>}
 
                     <div className="p-2 max-h-[90vh] overflow-y-auto">
 

@@ -94,7 +94,7 @@ export default function RegisterPage() {
         <button
             type="button"
             onClick={toggleShow}
-            className="absolute inset-y-0 right-0 px-3 flex items-center text-gray-600"
+            className="absolute inset-y-0 right-0 px-3 flex items-center"
         >
             {show ? (
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -110,113 +110,118 @@ export default function RegisterPage() {
     );
 
     return (
-        <div className="min-h-screen flex items-center justify-center  p-4">
-            <div className="bg-white p-8 rounded-xl shadow-2xl w-full max-w-md">
-                <h2 className="text-3xl font-bold mb-6 text-center text-gray-800">Create Account</h2>
+        <div className="min-h-screen   flex items-center justify-center px-4">
+            <div className="w-full max-w-md bg-white text-black rounded-xl shadow-md overflow-hidden">
+                <div className="px-6 py-8">
 
-                {error && (
-                    <div className="bg-red-50 border-l-4 border-red-500 text-red-700 p-4 mb-6 rounded-md">
-                        <p className="font-medium">{error}</p>
-                    </div>
-                )}
 
-                <form onSubmit={handleSubmit} className="space-y-6">
-                    <div>
-                        <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                            Full Name
-                        </label>
-                        <input
-                            type="text"
-                            id="name"
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                            required
-                            placeholder="Enter your full name"
-                        />
-                    </div>
+                    <h2 className="text-3xl font-bold mb-6 text-center">Create Account</h2>
 
-                    <div>
-                        <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                            Email Address
-                        </label>
-                        <input
-                            type="email"
-                            id="email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                            required
-                            placeholder="you@example.com"
-                        />
-                    </div>
+                    {error && (
+                        <div className="bg-red-50 border-l-4 border-red-500 text-red-700 p-4 mb-6 rounded-md">
+                            <p className="font-medium">{error}</p>
+                        </div>
+                    )}
 
-                    <div className="relative">
-                        <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
-                            Password
-                        </label>
-                        <input
-                            type={showPassword ? "text" : "password"}
-                            id="password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 pr-10"
-                            required
-                            minLength={8}
-                            placeholder="At least 8 characters"
-                        />
-                        {renderPasswordToggle(showPassword, () => setShowPassword(!showPassword))}
-                    </div>
+                    <form onSubmit={handleSubmit} className="space-y-6">
+                        <div>
+                            <label htmlFor="name" className="block text-sm font-medium mb-2">
+                                Full Name
+                            </label>
+                            <input
+                                type="text"
+                                id="name"
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
+                                className="w-full px-3 py-2 border  rounded-md shadow-sm focus:outline-none focus:ring-2 "
+                                required
+                                placeholder="Enter your full name"
+                            />
+                        </div>
 
-                    <div className="relative">
-                        <label htmlFor="confirm-password" className="block text-sm font-medium text-gray-700 mb-2">
-                            Confirm Password
-                        </label>
-                        <input
-                            type={showConfirmPassword ? "text" : "password"}
-                            id="confirm-password"
-                            value={confirmPassword}
-                            onChange={(e) => setConfirmPassword(e.target.value)}
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 pr-10"
-                            required
-                            minLength={8}
-                            placeholder="Repeat your password"
-                        />
-                        {renderPasswordToggle(showConfirmPassword, () => setShowConfirmPassword(!showConfirmPassword))}
-                    </div>
+                        <div>
+                            <label htmlFor="email" className="block text-sm font-medium mb-2">
+                                Email Address
+                            </label>
+                            <input
+                                type="email"
+                                id="email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                className="w-full px-3 py-2 border  rounded-md shadow-sm focus:outline-none focus:ring-2 "
+                                required
+                                placeholder="you@example.com"
+                            />
+                        </div>
 
-                    <div>
-                        <label htmlFor="role" className="block text-sm font-medium text-gray-700 mb-2">
-                            Account Type
-                        </label>
-                        <select
-                            id="role"
-                            value={role}
-                            onChange={(e) => setRole(e.target.value)}
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        <div className="relative">
+                            <label htmlFor="password" className="block text-sm font-medium mb-2">
+                                Password
+                            </label>
+                            <input
+                                type={showPassword ? "text" : "password"}
+                                id="password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                className="w-full px-3 py-2 border  rounded-md shadow-sm focus:outline-none focus:ring-2   pr-10"
+                                required
+                                minLength={8}
+                                placeholder="At least 8 characters"
+                            />
+                            {renderPasswordToggle(showPassword, () => setShowPassword(!showPassword))}
+                        </div>
+
+                        <div className="relative">
+                            <label htmlFor="confirm-password" className="block text-sm font-medium mb-2">
+                                Confirm Password
+                            </label>
+                            <input
+                                type={showConfirmPassword ? "text" : "password"}
+                                id="confirm-password"
+                                value={confirmPassword}
+                                onChange={(e) => setConfirmPassword(e.target.value)}
+                                className="w-full px-3 py-2 border  rounded-md shadow-sm focus:outline-none focus:ring-2   pr-10"
+                                required
+                                minLength={8}
+                                placeholder="Repeat your password"
+                            />
+                            {renderPasswordToggle(showConfirmPassword, () => setShowConfirmPassword(!showConfirmPassword))}
+                        </div>
+
+                        <div>
+                            <label htmlFor="role" className="block text-sm font-medium mb-2">
+                                Account Type
+                            </label>
+                            <select
+                                id="role"
+                                value={role}
+                                onChange={(e) => setRole(e.target.value)}
+                                className="w-full px-3 py-2 border  rounded-md shadow-sm focus:outline-none focus:ring-2  "
+                            >
+                                <option value="customer">Customer</option>
+                                <option value="admin">Admin</option>
+                            </select>
+                        </div>
+
+                        <button
+                            type="submit"
+                            disabled={isLoading}
+                            className="w-full bg-black text-white py-2 rounded-md   transition-colors focus:outline-none focus:ring-2  focus:ring-offset-2 disabled:opacity-50"
                         >
-                            <option value="customer">Customer</option>
-                            <option value="admin">Admin</option>
-                        </select>
+                            {isLoading ? 'Creating Account...' : 'Register'}
+                        </button>
+                    </form>
+
+                    <div className="mt-6 text-center">
+                        <p className="text-sm">
+                            Already have an account?{' '}
+                            <Link href="/login" className="font-medium text-black">
+                                Sign in
+                            </Link>
+                        </p>
                     </div>
-
-                    <button
-                        type="submit"
-                        disabled={isLoading}
-                        className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50"
-                    >
-                        {isLoading ? 'Creating Account...' : 'Register'}
-                    </button>
-                </form>
-
-                <div className="mt-6 text-center">
-                    <p className="text-sm text-gray-600">
-                        Already have an account?{' '}
-                        <Link href="/login" className="font-medium text-blue-600 hover:text-blue-500">
-                            Sign in
-                        </Link>
-                    </p>
                 </div>
+
             </div>
         </div>
     );

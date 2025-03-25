@@ -4,6 +4,7 @@ import Dialog from '@/common/dialog';
 import { productApi, reportsApi } from '@/lib/api';
 import { RevenueReport, SalesByCategory, TopSpender } from '@/types';
 import { useState, useEffect, useCallback } from 'react';
+import toast from 'react-hot-toast';
 
 
 export default function ReportsPage() {
@@ -77,6 +78,15 @@ export default function ReportsPage() {
             });
         } catch (error) {
             console.error('Failed to add product', error);
+            toast.error((error as {
+                response: {
+                    data: {
+                        message: string;
+                    };
+                };
+            }
+
+            ).response?.data.message || 'Failed to add product');
         }
     };
 
@@ -87,7 +97,7 @@ export default function ReportsPage() {
 
             <button
                 onClick={() => setIsOpen(true)}
-                className="mb-6 px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700"
+                className="mb-6 px-4 py-2 bg-white text-black rounded-md"
             >
                 Add Product
             </button>
@@ -192,7 +202,7 @@ export default function ReportsPage() {
                     </div>
 
                     <div className="flex justify-end">
-                        <button type="submit" className="py-2 px-4 bg-indigo-600 text-white rounded-md hover:bg-indigo-700">
+                        <button type="submit" className="py-2 px-4 bg-black text-white rounded-md">
                             Add Product
                         </button>
                     </div>
