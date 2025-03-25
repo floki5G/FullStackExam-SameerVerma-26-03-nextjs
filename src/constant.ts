@@ -1,0 +1,1 @@
+export const ACCOUNT_ACCESS_TOKEN = 'token';
